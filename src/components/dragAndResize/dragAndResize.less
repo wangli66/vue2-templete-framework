@@ -1,0 +1,134 @@
+// .drag-and-resize-container {
+.drag-and-resize-container {
+    // width: 200px;
+    // height: 200px;
+    // background: #cccccc;
+    // position: absolute;
+    position: fixed;
+
+    .drag {
+        user-select: none;
+        cursor: move;
+    }
+
+    .dr-wl-stick {
+        width: 2px;
+        height: 2px;
+        // background-color: red;
+        position: absolute;
+    }
+
+    .dr-wl-stick-t {
+        // width: calc(100% - 20px);
+        width: 100%;
+        top: -1px;
+        left: 0px;
+    }
+
+    .dr-wl-stick-r {
+        height: 100%;
+        top: 0px;
+        right: -1px;
+    }
+
+    .dr-wl-stick-b {
+        width: 100%;
+        bottom: -1px;
+        left: 0px;
+    }
+
+    .dr-wl-stick-l {
+        height: 100%;
+        left: -1px;
+        top: 0px;
+    }
+
+    // 四角
+    .dr-wl-stick-tl,
+    .dr-wl-stick-tr,
+    .dr-wl-stick-bl,
+    .dr-wl-stick-br {
+        width: 5px;
+        height: 5px;
+    }
+
+    .dr-wl-stick-tl {
+        top: 0px;
+        left: 0px;
+    }
+
+    .dr-wl-stick-tr {
+        top: 0px;
+        right: 0px;
+    }
+
+    .dr-wl-stick-bl {
+        bottom: 0px;
+        left: 0px;
+    }
+
+    .dr-wl-stick-br {
+        bottom: 0px;
+        right: 0px;
+    }
+
+    .dr-wl-stick-l,
+    .dr-wl-stick-r {
+        cursor: ew-resize;
+    }
+
+    .dr-wl-stick-t,
+    .dr-wl-stick-b {
+        cursor: ns-resize;
+    }
+
+    .dr-wl-stick-tl,
+    .dr-wl-stick-br {
+        cursor: nwse-resize;
+        // background-color: blue;
+    }
+
+    .dr-wl-stick-tr,
+    .dr-wl-stick-bl {
+        cursor: nesw-resize;
+        // background-color: blue;
+    }
+}
+
+// **以下部分，应该放在视图层中
+
+.self-drag-and-resize-style {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: 0 0 5px #cccccc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.self-drag-and-resize-style .able {
+    user-select: unset;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.self-drag-and-resize-style .title-content {
+    float: left;
+    font-size: 14px;
+    color: #4073a7;
+}
+
+.self-drag-and-resize-style .operate-content {
+    float: right;
+}
+
+.self-drag-and-resize-style .clear {
+    clear: both;
+}
+
+.self-drag-and-resize-style .drag {
+    height: 36px;
+    line-height: 36px;
+    padding: 0 12px;
+    background-color: #f8fcff;
+    border-bottom: 1px solid #cececf;
+}

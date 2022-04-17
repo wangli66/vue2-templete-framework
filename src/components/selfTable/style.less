@@ -1,0 +1,232 @@
+.self-table-container {
+    //表格上方的按钮
+    @primary_color: #ACACAC; //搜索框的主要颜色
+    @primary_color_hover: #2F7FE3;
+
+    // *** 右侧 表格附带操作按钮
+    .self-search-input {
+        width: 220px;
+
+        .el-input__inner {
+            height: 30px;
+            line-height: 30px;
+            border-color: @primary_color;
+            border-right-color: transparent;
+        }
+
+        .el-input-group__append {
+            padding-left: 10px;
+            padding-right: 12px;
+            border-color: @primary_color;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        .el-icon-search {
+            font-size: 16px;
+            color: @primary_color;
+            font-weight: bold;
+
+            &:hover {
+                color: @primary_color_hover;
+            }
+        }
+
+    }
+
+    .right-content {
+        .self-operate-btn {
+            line-height: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 7px;
+            padding: 0 3px;
+            color: @primary_color;
+            cursor: pointer;
+
+            &:hover {
+                color: @primary_color_hover;
+            }
+        }
+
+        .self-icon-sieving {
+            color: @primary_color;
+
+            &:hover {
+                color: @primary_color_hover;
+            }
+        }
+    }
+
+    .operate-clear {
+        clear: both;
+    }
+
+
+    //  *** 操作栏的内容
+    .operate-content {
+        text-align: center;
+        padding-bottom: 11px;
+
+        .left-content {
+            float: left;
+            text-align: left;
+
+            .el-button--mini {
+                font-size: 14px;
+                letter-spacing: 2px;
+            }
+        }
+
+        .center-content {
+            display: inline-block;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .right-content {
+            float: right;
+            text-align: left;
+        }
+    }
+
+    // ***  表格
+    .el-table td,
+    .el-table th {
+        padding: 8px 0;
+    }
+
+    .fontColor {
+        color: #434343;
+    }
+
+    // .el-table__body tr.hover-row.current-row>td,
+    // .el-table__body tr.hover-row.el-table__row--striped.current-row>td,
+    // .el-table__body tr.hover-row.el-table__row--striped>td,
+    // .el-table__body tr.hover-row>td {
+    //     background-color: #E2F2FF;
+    // }
+
+    // .el-table__header {
+    //     thead {
+    //         tr {
+    //             background-color: #E2F2FF;
+    //         }
+
+    //         th {
+    //             font-size: 14px;
+    //             font-weight: bold;
+    //             color: #41749D;
+    //             background-color: #E2F2FF;
+    //             border-bottom: 1px solid #C3DCEF;
+    //         }
+    //     }
+    // }
+
+    // .el-table__body {
+    //     tbody {
+    //         // tr.el-table__row:nth-child(even) {
+    //         //     background-color: #F6F6F7;
+    //         // }
+
+    //         // tr.el-table__row:nth-child(odd) {
+    //         //     background-color: #F5FBFF;
+    //         // }
+
+    //         tr.el-table__row {
+    //             &:hover {
+    //                 td {
+    //                     background-color: #E2F2FF;
+    //                 }
+    //             }
+    //         }
+
+    //         td {
+    //             font-size: 14px;
+    //             font-weight: 400;
+    //             color: #474747;
+    //             background-color: #ffffff;
+    //             // transition: none;
+    //             // position: unset;
+    //         }
+    //     }
+    // }
+
+
+    // 边框
+    // .el-table--border,
+    // .el-table--group {
+    //     border: 1px solid #C3DCEF;
+    // }
+
+
+    // .el-table--border th,
+    // .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
+    //     border-right: 1px solid #C3DCEF;
+    // }
+
+    // .el-table--border td {
+    //     border-right: 1px solid transparent;
+    // }
+
+    // .el-table td {
+    //     border-bottom: 1px solid #C3DCEF;
+    // }
+
+
+    // 表格中的图标
+    // .el-table {
+    //     .self-icon-button {
+    //         padding: 0px;
+    //         margin: 0px;
+    //     }
+
+    //     .is-disabled {
+    //         .self-icon {
+    //             color: #B1B2B2;
+    //         }
+    //     }
+
+    //     .self-icon {
+    //         font-size: 19px;
+    //         color: #809EE3;
+    //         margin-left: 3px;
+    //         margin-right: 3px;
+
+    //         // &:hover {
+    //         //     cursor: pointer;
+    //         // }
+    //     }
+    // }
+
+
+    // *** 表格的排序
+    // .caret-wrapper {
+    //     height: 22px;
+
+    //     .sort-caret.ascending {
+    //         border-bottom-color: #41749D;
+    //         top: -2px;
+    //     }
+
+    //     .sort-caret.descending {
+    //         border-top-color: #41749D;
+    //         bottom: 0px;
+    //     }
+    // }
+
+    // .ascending .sort-caret.ascending {
+    //     border-bottom-color: #409EFF
+    // }
+
+    // .descending .sort-caret.descending {
+    //     border-top-color: #409EFF;
+    // }
+
+    // *** 分页
+    .self-pagination {
+        margin-top: 25px;
+        text-align: right;
+    }
+
+}

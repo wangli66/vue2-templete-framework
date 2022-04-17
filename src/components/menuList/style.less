@@ -1,0 +1,69 @@
+.self-menu-list-container.el-menu.el-menu--horizontal {
+    border-bottom: none;
+}
+
+.self-menu-list-container.el-menu {
+    border-right: none;
+}
+
+// 
+.self-menu-list-container {
+    .el-submenu {
+        position: relative;
+    }
+
+    .self-sub-menu {
+        min-width: 100%;
+        text-align: left;
+    }
+
+    .el-submenu .el-menu-item,
+    .el-menu--popup {
+        min-width: 50px;
+    }
+}
+
+//菜单项为外链接时
+.self-menu-list-container.el-menu--horizontal {
+
+    .el-menu--popup .el-submenu-link-url,
+    .el-submenu-link-url {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .link-url {
+        display: inline-block;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+.self-menu-list-container {
+    .el-menu--popup {
+        .el-submenu-link-url {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .link-url {
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}
+
+
+// 以后需要删除的样式
+// .self-menu-list-container.el-menu--horizontal>.el-submenu.is-active .el-submenu__title,
+// .self-menu-list-container.el-menu--horizontal>.el-menu-item.is-active,
+// .self-menu-list-container .el-menu-item.is-active {
+//     background-color: #4d4d4c !important;
+// }
+
+// .self-menu-list-container .el-menu-item:hover,
+// .self-menu-list-container .el-submenu__title:hover {
+//     background-color: #4d4d4c !important;
+// }

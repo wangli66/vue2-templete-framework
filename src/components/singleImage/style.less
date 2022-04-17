@@ -1,0 +1,43 @@
+.single-image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .detail-operate {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+        padding: 5px 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 9px #cccccc;
+        border-radius: 4px;
+    }
+
+    .image-wrap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .el-image {
+        // width: 80%;
+        // height: 100%;
+        position: relative;
+        cursor: pointer;
+
+        .el-image__inner {
+            width: auto;
+            // pointer-events: none;
+        }
+    }
+
+    .full-w {
+        .el-image__inner {
+            width: 100%;
+        }
+    }
+
+
+}
