@@ -9,9 +9,7 @@
 
 ## 文档地址
 
-[文档地址]: http://wangli66.gitee.io/vue2-templete-framework/
-
-
+[使用详细说明地址](http://wangli66.gitee.io/vue2-templete-framework/)
 
 ## Project setup
 
