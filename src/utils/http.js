@@ -1,4 +1,4 @@
-import { dateFormat } from '@/utils/util.js';
+import { dateFormat } from '@/utils/utils.js';
 import axios from 'axios';
 import Vue from 'vue';
 import { storage } from './storage.js'; //前端本地存储封装方法

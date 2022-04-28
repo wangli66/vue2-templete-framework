@@ -14,10 +14,15 @@
             </template>
             <template v-else>
                 <el-menu-item :key="'self-menu-' + index" :index="menu.path" :class="{ 'el-submenu-link-url': menu.isLinkUrl }" :disabled="menu.disabled">
-                    <template v-if="menu.isLinkUrl">
-                        <span class="link-url" @click.stop="handleClickMenu(menu, $event)"> {{ menu.title || menu.name }}</span>
+                    <i :class="menu.icon" v-if="menu.icon"></i>
+                    <template slot="title">
+                        <template v-if="menu.isLinkUrl">
+                            <span class="link-url" @click.stop="handleClickMenu(menu, $event)"> {{ menu.title || menu.name }}</span>
+                        </template>
+                        <template v-else>
+                            <span>{{ menu.title || menu.name }}</span>
+                        </template>
                     </template>
-                    <template v-else> {{ menu.title || menu.name }} </template>
                 </el-menu-item>
             </template>
         </template>

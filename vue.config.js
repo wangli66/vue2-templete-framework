@@ -1,6 +1,7 @@
 const env = process.env;
 
 module.exports = {
+    lintOnSave: 'warning',
     transpileDependencies: true,
     // publicPath: env.BASE_URL,
     publicPath: './',

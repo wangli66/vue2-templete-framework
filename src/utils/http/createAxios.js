@@ -8,7 +8,7 @@
 import _ from 'lodash';
 import axios from 'axios';
 import mergeConfig from 'axios/lib/core/mergeConfig';
-import { qsStringify } from '@/utils/util.js';
+import { qsStringify } from '@/utils/utils.js';
 import wrapAxios from './wrapAxios';
 import exShowLoading from './exShowLoading';
 import * as exCancel from './exCancel';

@@ -2,6 +2,7 @@ import selfSubMenu from './subMenu.vue';
 
 export default {
     inheritAttrs: false,
+    name: 'menuList',
     components: { selfSubMenu },
     props: {
         menuList: Array,
@@ -50,7 +51,7 @@ export default {
             return false;
         }
     },
-    created() {
+    mounted() {
         this.menuData = this.menuList;
         let a = this.menuData;
         if (this.defaultActiveIndex) {

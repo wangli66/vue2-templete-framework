@@ -26,18 +26,19 @@ const routes = [
  * 1、静态路由需注释掉本段的前三行代码
  * 2、一般用于根据不同的用户展示不同的菜单
  * 3、此处应是一个接口请求，请求接口获取路由信息，（注意同步请求）
- *  axios(XXX).then(res=>{
- *      let data = res.data;
- *      let menusList = [];
- *      routersData(routerData, menusList);
- *      routes[0].children = menusList;
- *  })
  */
-let targetRoutes = [];
-routersData(routerData, targetRoutes);
-routes[0].children = targetRoutes;
-// 如果路由不需要自定重定向第一个子项，可将下一行删除
-routes[0].redirect = targetRoutes[0].path;
+const ajaxRouter = async () => {
+    // let { data } = await http.get(XXX); //或者是从vuex读取中的路由配置
+    let targetRoutes = [];
+    // 实际开发中，将routerData换成请求后的实际数据data
+    routersData(routerData, targetRoutes);
+    routes[0].children = targetRoutes;
+    // 如果路由不需要自定重定向第一个子项，可将下一行删除
+    routes[0].redirect = targetRoutes[0].path;
+};
+
+ajaxRouter();
+
 export default routes;
 
 /**
@@ -50,10 +51,11 @@ export function routersData(todoRes, targetRes) {
         let path = item.href,
             lastPath = path.split('/').pop();
         let authority = routerConfig[path] || {};
+        let componentUrl = item.componentUrl;
         targetRes.push({
             path: path,
             name: path,
-            component: () => import(`@/views/main${path}/${lastPath}.vue`),
+            component: () => import(`@/views/main${componentUrl ? componentUrl : path + '/' + lastPath}.vue`),
             meta: {
                 title: item.title || item.name,
                 hiddenHeader: !!item.hiddenHeader || authority['hiddenHeader'],
@@ -92,30 +94,33 @@ export const existComp = (curPath, allRoutes) => {
                 maxLongPath = item.path;
             }
         });
-        if (maxLongPath) {
-            let lastPath = curPath.split('/').pop();
-            let authority = routerConfig[curPath] || {};
-            try {
-                require(`@/views/main${curPath}/${lastPath}.vue`);
-            } catch (e) {
-                maxLongPath = '';
-            }
-            if (maxLongPath) {
-                routerConfigData = {
-                    path: curPath,
-                    name: curPath,
-                    component: () => import(`@/views/main${curPath}/${lastPath}.vue`),
-                    meta: {
-                        title: authority.title || authority.name,
-                        hiddenHeader: !!authority.hiddenHeader || authority['hiddenHeader'],
-                        hiddenLeftMenu: !!authority.hiddenLeftMenu || authority['hiddenLeftMenu'],
-                        hiddenCrumbs: !!authority.hiddenCrumbs || authority['hiddenCrumbs'],
-                        ...(authority.meta || {})
-                    }
-                };
-            }
-        }
+    } else {
+        maxLongPath = '/home';
     }
+    let lastPath = curPath.split('/').pop();
+    try {
+        require(`@/views/main${curPath}/${lastPath}.vue`);
+    } catch (e) {
+        maxLongPath = '';
+    }
+
+    if (maxLongPath) {
+        let authority = routerConfig[curPath] || {};
+        let componentUrl = authority.componentUrl;
+        routerConfigData = {
+            path: curPath,
+            name: curPath,
+            component: () => import(`@/views/main${componentUrl ? componentUrl : curPath + '/' + lastPath}.vue`),
+            meta: {
+                title: authority.title || authority.name,
+                hiddenHeader: !!authority.hiddenHeader || authority['hiddenHeader'],
+                hiddenLeftMenu: !!authority.hiddenLeftMenu || authority['hiddenLeftMenu'],
+                hiddenCrumbs: !!authority.hiddenCrumbs || authority['hiddenCrumbs'],
+                ...(authority.meta || {})
+            }
+        };
+    }
+
     return {
         isExist: !!maxLongPath,
         parentPath: maxLongPath,

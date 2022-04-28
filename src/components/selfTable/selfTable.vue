@@ -2,7 +2,7 @@
     <div class="self-table-container" :style="tableConStyle" v-loading="loading">
         <div class="operate-content" v-if="operateContentVisible">
             <div class="left-content">
-                <slot> </slot>
+                <slot></slot>
             </div>
             <div class="center-content">
                 <slot name="center"> </slot>
@@ -30,7 +30,17 @@
         <!-- 表头上方的内容 -->
         <slot name="table-top-content"></slot>
         <!-- 表格还缺少一个筛选列内容的 -->
-        <el-table border class="self-table" ref="selfInnerTable" :data="tableData" style="width: calc(100% - 0px)" v-bind="$attrs" v-on="$listeners">
+        <el-table
+            border
+            class="self-table"
+            ref="selfInnerTable"
+            :data="tableData"
+            style="width: calc(100% - 0px)"
+            v-bind="$attrs"
+            v-on="$listeners"
+            @select="handleSelect"
+            @select-all="handleSelectAll"
+        >
             <el-table-column v-if="showIndex" type="index" width="50" :label="showIndexLabel"></el-table-column>
             <el-table-column type="expand" v-if="expand" width="30">
                 <template slot-scope="props">
@@ -38,12 +48,14 @@
                 </template>
             </el-table-column>
             <template v-if="selection">
-                <template v-if="selectable">
-                    <el-table-column :selectable="selectInit" type="selection" width="45" align="center"> </el-table-column>
+                <el-table-column :selectable="selectable" type="selection" width="45" align="center"> </el-table-column>
+                <!-- <template v-if="selectable">
+                    <el-table-column :selectable="selectable" type="selection" width="45" align="center">
+                    </el-table-column>
                 </template>
                 <template v-else>
                     <el-table-column type="selection" width="45" align="center"></el-table-column>
-                </template>
+                </template> -->
             </template>
             <template v-for="column in columns">
                 <el-table-column
