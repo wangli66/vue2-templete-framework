@@ -98,24 +98,31 @@ export const existComp = (curPath, allRoutes) => {
         maxLongPath = '/home';
     }
     let lastPath = curPath.split('/').pop();
+    let authority = routerConfig[curPath] || {};
+    let componentUrl = authority.componentUrl;
+
+    let fileInfo = null;
+    // debugger;
     try {
-        require(`@/views/main${curPath}/${lastPath}.vue`);
+        fileInfo = require(`@/views/main${componentUrl ? componentUrl : curPath + '/' + lastPath}.vue`);
     } catch (e) {
         maxLongPath = '';
     }
 
     if (maxLongPath) {
-        let authority = routerConfig[curPath] || {};
-        let componentUrl = authority.componentUrl;
+        let fileRouterConfig = fileInfo.default.routerConfig || {};
         routerConfigData = {
             path: curPath,
             name: curPath,
-            component: () => import(`@/views/main${componentUrl ? componentUrl : curPath + '/' + lastPath}.vue`),
+            // component: () => import(`@/views/main${componentUrl ? componentUrl : curPath + '/' + lastPath}.vue`),
+            component: fileInfo.default,
+            // meta的优先级是 接口中获取的配置 > routerConfig.js中的配置  > 组件文件中的routerConfig配置
             meta: {
-                title: authority.title || authority.name,
-                hiddenHeader: !!authority.hiddenHeader || authority['hiddenHeader'],
-                hiddenLeftMenu: !!authority.hiddenLeftMenu || authority['hiddenLeftMenu'],
-                hiddenCrumbs: !!authority.hiddenCrumbs || authority['hiddenCrumbs'],
+                title: authority.title || authority.name || fileRouterConfig.title,
+                hiddenHeader: authority['hiddenHeader'] != undefined ? authority['hiddenHeader'] : fileRouterConfig['hiddenHeader'],
+                hiddenFooter: authority['hiddenFooter'] != undefined ? authority['hiddenFooter'] : fileRouterConfig['hiddenFooter'],
+                hiddenLeftMenu: authority['hiddenLeftMenu'] != undefined ? authority['hiddenLeftMenu'] : fileRouterConfig['hiddenLeftMenu'],
+                hiddenCrumbs: authority['hiddenCrumbs'] != undefined ? authority['hiddenCrumbs'] : fileRouterConfig['hiddenCrumbs'],
                 ...(authority.meta || {})
             }
         };

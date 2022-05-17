@@ -8,6 +8,7 @@ module.exports = {
     outputDir: 'dist',
     assetsDir: 'assets',
     devServer: {
+        port: '8086',
         // 需要内网的其它机器也能访问时，将值改成 '0.0.0.0'
         host: 'localhost',
         /* 更详细的配置规则：https://webpack.docschina.org/configuration/dev-server/#devserver-proxy */

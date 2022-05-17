@@ -4,6 +4,10 @@
 <script>
 import { http } from '@/utils/http/index.js';
 export default {
+    titleName: '11111',
+    routerConfig: {
+        hiddenHeader: true
+    },
     data() {
         return {};
     },

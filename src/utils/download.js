@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import axios from 'axios';
-import { dateFormat } from './index';
+import { dateFormat } from './utils';
 const getDownloadjs = function () {
     // const promise = import(/* webpackChunkName: "low-priority" */ 'downloadjs');
     const promise = new Promise();
